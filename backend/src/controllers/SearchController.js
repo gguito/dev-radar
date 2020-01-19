@@ -6,7 +6,7 @@ module.exports = {
     async index(req, res) {
         //Buscar devs em um raio de 10km
         //Filtrar por tecnologia
-        const { latitude, longitude, techs } = req.query;
+        const { longitude, latitude, techs } = req.query;
 
         const techsArray = parseStringAsArray(techs);
 
@@ -22,12 +22,9 @@ module.exports = {
                     },
                     $maxDistance: 10000,
                 },
-            }
-        })
-
-        console.log(devs);
+            },
+        });     
         
-        
-        return res.json({ devs: [] });
+        return res.json({ devs });
     }
 }
